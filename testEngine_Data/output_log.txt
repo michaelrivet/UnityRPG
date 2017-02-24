@@ -1,0 +1,62 @@
+Initialize engine version: 5.1.0f3 (ec70b008569d)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [aticfx64.dll 21.19.407.0]
+    Renderer: AMD Radeon (TM) R9 200 Series
+    Vendor:   ATI
+    VRAM:     2026 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 INTZ=1 NULL=1 RESZ=1 SlowINTZ=1
+Begin MonoManager ReloadAssembly
+Platform assembly: E:\Users\Public\Documents\Unity Projects\TestEngine\testEngine_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\Users\Public\Documents\Unity Projects\TestEngine\testEngine_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\Users\Public\Documents\Unity Projects\TestEngine\testEngine_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\Users\Public\Documents\Unity Projects\TestEngine\testEngine_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\Users\Public\Documents\Unity Projects\TestEngine\testEngine_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading E:\Users\Public\Documents\Unity Projects\TestEngine\testEngine_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: E:\Users\Public\Documents\Unity Projects\TestEngine\testEngine_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading E:\Users\Public\Documents\Unity Projects\TestEngine\testEngine_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: E:\Users\Public\Documents\Unity Projects\TestEngine\testEngine_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading E:\Users\Public\Documents\Unity Projects\TestEngine\testEngine_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: E:\Users\Public\Documents\Unity Projects\TestEngine\testEngine_Data\Managed\LitJson.dll (this message is harmless)
+Loading E:\Users\Public\Documents\Unity Projects\TestEngine\testEngine_Data\Managed\LitJson.dll into Unity Child Domain
+- Completed reload, in  0.143 seconds
+desktop: 1920x1080 60Hz; virtual: 5760x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: E:\Users\Public\Documents\Unity Projects\TestEngine\testEngine_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: E:\Users\Public\Documents\Unity Projects\TestEngine\testEngine_Data\Managed\System.dll (this message is harmless)
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.871804 ms
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 687.
+Total: 0.526528 ms (FindLiveObjects: 0.048205 ms CreateObjectMapping: 0.056291 ms MarkObjects: 0.373825 ms  DeleteObjects: 0.032033 ms)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 394)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 394)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 394)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 394)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 394)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 394)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 394)
+
