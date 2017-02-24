@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{D1F98DCD-18A9-2FB2-BF3F-686C36D58FE3}</ProjectGuid>
+	<ProjectGuid>{A93332BF-B766-D010-B03F-99B98341CDE5}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -68,6 +68,7 @@
      <Compile Include="Assets\Scripts\GameManagement\StartGame\ClassSelectController.cs" />
      <Compile Include="Assets\Scripts\GameManagement\StartGame\ClassSelectScript.cs" />
      <Compile Include="Assets\Scripts\GameManagement\StartGame\StartGame.cs" />
+     <Compile Include="Assets\Scripts\GameManagement\StaticHelpers\DirectionCalc.cs" />
      <Compile Include="Assets\Scripts\HealthPickup.cs" />
      <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
      <Compile Include="Assets\Scripts\Inventory\Item.cs" />
@@ -104,7 +105,7 @@
  <HintPath>E:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="LitJson">
- <HintPath>E:/Users/Public/Documents/Unity Projects/TestEngine/Assets/LitJson.dll</HintPath>
+ <HintPath>E:/Users/Public/Documents/Unity Projects/UnityRPG/Assets/LitJson.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>E:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

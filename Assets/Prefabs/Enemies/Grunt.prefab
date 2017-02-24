@@ -164,7 +164,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6162160
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -245,8 +245,10 @@ MonoBehaviour:
   DodgeCooldown: 1
   Projectile: {fileID: 100000, guid: 8fde8ec1b330d4bbfb4839f4b41cadc0, type: 2}
   target: {fileID: 0}
+  Speed: 5
+  DodgeSpeed: 10
   ShootDistance: 15
-  AggroDistance: 25
+  AggroDistance: 40
 --- !u!120 &12012710
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -395,7 +397,7 @@ Prefab:
       objectReference: {fileID: 100000, guid: 8fde8ec1b330d4bbfb4839f4b41cadc0, type: 2}
     - target: {fileID: 0}
       propertyPath: AggroDistance
-      value: 25
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ShootDistance
@@ -416,6 +418,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_UseWorldSpace
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: DodgeSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Speed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
