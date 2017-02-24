@@ -20,8 +20,6 @@ public class Gun : MonoBehaviour
 
 	void Update ()
 	{
-
-
 		/*if (!_playerCtrl.facingRight)
 			transform.localScale = new Vector3 (-1f, 1f, 1f);
 		else
@@ -30,22 +28,21 @@ public class Gun : MonoBehaviour
 		// If the fire button is pressed...
 		if(Input.GetButtonDown(GlobalControl.Instance.KeyboardSettings.Fire1))
 		{
-			// ... set the animator Shoot trigger parameter and play the audioclip.
-			//_anim.SetTrigger("Shoot");
-			//GetComponent<AudioSource>().Play();
-			
-			float xDir = _playerCtrl.movement.x == 0f ? 0f : _playerCtrl.movement.x > 0f ? 1f : -1f;
-			float yDir = _playerCtrl.movement.y == 0f ? 0f : _playerCtrl.movement.y > 0f ? 1f : -1f;
+            Vector3 mouseLoc = Input.mousePosition;
+            mouseLoc.z = 10.0f;
+            mouseLoc = Camera.main.ScreenToWorldPoint(mouseLoc);
+            
+            // ... set the animator Shoot trigger parameter and play the audioclip.
+            //_anim.SetTrigger("Shoot");
+            //GetComponent<AudioSource>().Play();
+            
+            Vector2 dir = Vector2.ClampMagnitude(mouseLoc - transform.position, 1.0f);
 
-            if (xDir == 0f && yDir == 0f)
-                xDir = _playerCtrl.facingRight ? 1f : -1f;
-
-            // ... instantiate the rocket facing right and set it's velocity to the right. 
             GameObject bulletInstance = Instantiate(Rocket);
 			IProjectile bI = bulletInstance.GetComponent<IProjectile>();
 
 			bI.SetLocation(transform.GetChild(0).gameObject.transform.position);
-            bI.SetDirection(new Vector2(xDir, yDir));
+            bI.SetDirection(dir);
 		}
 	}
 }

@@ -81,4 +81,10 @@ public static class DirectionCalc {
         return Vector2.up;
     }
 	
+    public static Vector2 GetPlayerShotDirection(Vector2 dir)
+    {
+        Vector2 shotDir = Vector2.left;
+
+        return shotDir;
+    }
 }
