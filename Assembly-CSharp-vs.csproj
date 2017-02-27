@@ -48,7 +48,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BackgroundParallax.cs" />
      <Compile Include="Assets\Scripts\BackgroundPropSpawner.cs" />
-     <Compile Include="Assets\Scripts\Bomb.cs" />
      <Compile Include="Assets\Scripts\BombPickup.cs" />
      <Compile Include="Assets\Scripts\Destroyer.cs" />
      <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
@@ -68,6 +67,7 @@
      <Compile Include="Assets\Scripts\GameManagement\StartGame\ClassSelectController.cs" />
      <Compile Include="Assets\Scripts\GameManagement\StartGame\ClassSelectScript.cs" />
      <Compile Include="Assets\Scripts\GameManagement\StartGame\StartGame.cs" />
+     <Compile Include="Assets\Scripts\GameManagement\StaticHelpers\DamageCalc.cs" />
      <Compile Include="Assets\Scripts\GameManagement\StaticHelpers\DirectionCalc.cs" />
      <Compile Include="Assets\Scripts\HealthPickup.cs" />
      <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
@@ -82,10 +82,13 @@
      <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerShield.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
-     <Compile Include="Assets\Scripts\Player\Skills\ISkill.cs" />
-     <Compile Include="Assets\Scripts\Player\Skills\SkillController.cs" />
+     <Compile Include="Assets\Scripts\Player\Skills\Base\Skill.cs" />
+     <Compile Include="Assets\Scripts\Player\Skills\Base\SkillController.cs" />
+     <Compile Include="Assets\Scripts\Player\Skills\Bomb.cs" />
+     <Compile Include="Assets\Scripts\Player\Skills\SuppressionFire.cs" />
+     <Compile Include="Assets\Scripts\Player\Weapons\Base\IProjectile.cs" />
+     <Compile Include="Assets\Scripts\Player\Weapons\Base\Projectile.cs" />
      <Compile Include="Assets\Scripts\Player\Weapons\Gun.cs" />
-     <Compile Include="Assets\Scripts\Player\Weapons\IProjectile.cs" />
      <Compile Include="Assets\Scripts\Player\Weapons\Laser.cs" />
      <Compile Include="Assets\Scripts\Player\Weapons\Rocket.cs" />
      <Compile Include="Assets\Scripts\Player\Weapons\SecondWeapon.cs" />

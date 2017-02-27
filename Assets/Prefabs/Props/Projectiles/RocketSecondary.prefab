@@ -11,7 +11,7 @@ GameObject:
   - 61: {fileID: 6168060}
   - 50: {fileID: 5037346}
   - 114: {fileID: 11443852}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RocketSecondary
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 419692}
   - 212: {fileID: 21256866}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - 4: {fileID: 418022}
   - 212: {fileID: 21288654}
   - 95: {fileID: 9513618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - 198: {fileID: 19870478}
   - 199: {fileID: 19903566}
   - 114: {fileID: 11405408}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4383004accee7494fba3cf64d65513c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageMult: 1
   explosion: {fileID: 100000, guid: 42404bf7d14c342f69690c9961a7530d, type: 2}
   Speed: 45
 --- !u!198 &19870478
@@ -1299,7 +1300,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString

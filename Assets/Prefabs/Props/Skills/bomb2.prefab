@@ -31,7 +31,7 @@ GameObject:
   - 198: {fileID: 19852244}
   - 199: {fileID: 19957626}
   - 114: {fileID: 11459552}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,12 +128,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d060b6f2711747368c4bc5aae24049b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageMult: 1
   bombRadius: 7
   bombForce: 100
   boom: {fileID: 8300000, guid: 8b4e61c51941a46d1aac273472c814fd, type: 3}
   fuse: {fileID: 8300000, guid: 238da4efc08184aee919af254edb2ef1, type: 3}
   fuseTime: 1.5
   explosion: {fileID: 100000, guid: 9c8b546f746e74328ab6b8bba733af67, type: 2}
+  Speed: 20
 --- !u!198 &19852244
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1241,6 +1243,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_GravityScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -51,7 +51,7 @@ public class SecondWeapon : MonoBehaviour {
 
             // ... set the animator Shoot trigger parameter and play the audioclip.
             _anim.SetTrigger("Shoot2");
-            GetComponent<AudioSource>().Play();
+            //GetComponent<AudioSource>().Play();
 
             float xDir = _playerCtrl.movement.x == 0f ? 0f : _playerCtrl.movement.x > 0f ? 1f : -1f;
             float yDir = _playerCtrl.movement.y == 0f ? 0f : _playerCtrl.movement.y > 0f ? 1f : -1f;
@@ -59,10 +59,12 @@ public class SecondWeapon : MonoBehaviour {
                 xDir = _playerCtrl.facingRight ? 1f : -1f;
 
             // ... instantiate the rocket facing right and set it's velocity to the right. 
-			GameObject bulletInstance = Instantiate(Ammo);
-			IProjectile bI = bulletInstance.GetComponent<IProjectile>();
-			bI.SetLocation(transform.GetChild(0).gameObject.transform.position);
-			bI.SetDirection(new Vector2(xDir, yDir));
+            GameObject projectileObject = Instantiate(Ammo);
+			Projectile p = projectileObject.GetComponent<Projectile>();
+
+			p.SetLocation(transform.GetChild(0).gameObject.transform.position);
+			p.SetDirection(new Vector2(xDir, yDir));
+            p.SetAttack(_playerCtrl.playerStats.BaseAttack + +_playerCtrl.playerStats.WeaponAttack);
         }
         else
         {

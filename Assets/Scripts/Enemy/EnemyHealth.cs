@@ -30,8 +30,9 @@ public class EnemyHealth : MonoBehaviour {
         return _health == 0;
     }
 
-    public void DamageHealth(int damage)
+    public void DamageHealth(int Attack)
     {
+        int damage = DamageCalc.CalcDamage(Attack, _enemy.Defense, DamageType.Energy);
         _health -= damage;
         if (_health < 0)
             _health = 0;

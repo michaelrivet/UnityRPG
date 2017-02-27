@@ -18,7 +18,6 @@ public class PlayerShield : MonoBehaviour {
     private Animator _anim;                      // Reference to the Animator on the player
 
     public bool _recharging = false;
-    private IEnumerator _rechargeRoutine;
 	
 
     void Start()
@@ -31,8 +30,6 @@ public class PlayerShield : MonoBehaviour {
         // Getting the intial scale of the healthbar (whilst the player has full health).
         _shieldScale = _shieldBar.transform.localScale;
         UpdateShieldBar();
-
-        _rechargeRoutine = RechargeShield();
     }
 	
 	// Update is called once per frame
@@ -64,15 +61,15 @@ public class PlayerShield : MonoBehaviour {
 		StopCoroutine("RechargeShield");
     }
 
-    public void DamageShield(int damage)
+    public void DamageShield(int Attack)
     {
 		if (_recharging) {
 			_recharging = false;
 			StopCoroutine ("RechargeShield");
 		}
 
-        // TODO: Add Actual Damage
-		_playerControl.playerStats.Shield -= damage;
+        int damage = DamageCalc.CalcShield(Attack, _playerControl.playerStats.Armor + _playerControl.playerStats.Defense, DamageType.Kinetic);
+        _playerControl.playerStats.Shield -= damage;
         if (_playerControl.playerStats.Shield < 0)
             _playerControl.playerStats.Shield = 0;
 

@@ -35,8 +35,9 @@ public class EnemyShield : MonoBehaviour {
         return _shield > 0;
     }
 
-    public void DamageShield(int damage)
+    public void DamageShield(int Attack)
     {
+        int damage = DamageCalc.CalcShield(Attack, _enemy.Defense, DamageType.Kinetic);
         _shield -= damage;
         if (_shield < 0)
             _shield = 0;

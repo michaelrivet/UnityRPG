@@ -9,9 +9,12 @@ public class PlayerStats {
     public int Ammo;
 
     public int Armor;
+    public int WeaponAttack;
+
+    public int Defense;
+    public int BaseAttack;
     public int Speed;
     public int Accuracy;
-    public int Defense;
     public int Luck;
 
     public float PlayerX;
@@ -43,6 +46,12 @@ public class PlayerStats {
 		MaxHealth = 100;
 		MaxShield = 100;
 		MaxEnergy = 100;
+
+        Armor = 5;
+        Defense = 5;
+
+        BaseAttack = 5;
+        WeaponAttack = 2;
 
 		Ammo = -1;
 	}

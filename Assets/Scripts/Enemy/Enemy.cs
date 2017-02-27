@@ -3,28 +3,29 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-	public float moveSpeed = 2f;		// The speed the enemy moves at.
-	public int HP = 2;					// How many times the enemy can be hit before it dies.
-	public Sprite deadEnemy;			// A sprite of the enemy when it's dead.
-	public Sprite damagedEnemy;			// An optional sprite of the enemy when it's damaged.
-	public AudioClip[] deathClips;		// An array of audioclips that can play when the enemy dies.
-	public GameObject hundredPointsUI;	// A prefab of 100 that appears when the enemy dies.
-	public float deathSpinMin = -100f;			// A value to give the minimum amount of Torque when dying
-	public float deathSpinMax = 100f;			// A value to give the maximum amount of Torque when dying
-    public GameObject dropItem;
-    public int droppedQty;
-    public GameObject rareDropItem;
-	public int rareDroppedQty;
+	public float MoveSpeed = 2f;        // The speed the enemy moves at.
+    public int Attack = 5;
+    public int Defense = 5;
 
-	private SpriteRenderer _ren;			// Reference to the sprite renderer.
+    private SpriteRenderer _ren;            // Reference to the sprite renderer.
+    public Sprite deadEnemy;			// A sprite of the enemy when it's dead.
+	public Sprite damagedEnemy;			// An optional sprite of the enemy when it's damaged.
+	public AudioClip[] deathClips;      // An array of audioclips that can play when the enemy dies.
+    private bool _dead = false;         // Whether or not the enemy is dead.
+
+    public GameObject hundredPointsUI;	// A prefab of 100 that appears when the enemy dies.
+
+    public GameObject Drop;
+    public int DroppedQty;
+    public GameObject RareDrop;
+	public int RareDroppedQty;
+
 	private Transform frontCheck;		// Reference to the position of the gameobject used for checking if something is in front.
-	private bool _dead = false;			// Whether or not the enemy is dead.
 	private Score score;				// Reference to the Score script.
-    private int MaxHP;
 
     private EnemyShield _enemyShield;
     private EnemyHealth _enemyHealth;
-    public float LastHit;
+    private float _lastHit;
 	
 	void Start()
 	{
@@ -33,15 +34,11 @@ public class Enemy : MonoBehaviour
 
         // Setting up the references.
         _ren = transform.GetComponent<SpriteRenderer>();
-		//frontCheck = transform.Find("frontCheck").transform;
 		//score = GameObject.Find("Score").GetComponent<Score>();
 	}
 
 	void FixedUpdate ()
 	{
-		// Set the enemy's velocity to moveSpeed in the x direction.
-		//GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);	
-
 		// If the enemy has one hit point left and has a damagedEnemy sprite...
 		if(_enemyHealth.IsDamaged())
 			// ... set the sprite renderer's sprite to be the damagedEnemy sprite.
@@ -53,18 +50,17 @@ public class Enemy : MonoBehaviour
 			Death ();
 	}
 	
-	public void Hurt()
+	public void Hurt(int Attack)
 	{
-        int damage = 10;
-        LastHit = Time.time;
+        _lastHit = Time.time;
         // Reduce the number of hit points by one.
         if (_enemyShield.IsShieldActive())
         {
-            _enemyShield.DamageShield(damage);
+            _enemyShield.DamageShield(Attack);
         }
         else
         {
-            _enemyHealth.DamageHealth(damage);
+            _enemyHealth.DamageHealth(Attack);
         }
 	}
 	
@@ -88,11 +84,7 @@ public class Enemy : MonoBehaviour
 
 		// Set dead to true.
 		_dead = true;
-
-		// Allow the enemy to rotate and spin it by adding a torque.
-		GetComponent<Rigidbody2D>().fixedAngle = false;
-		GetComponent<Rigidbody2D>().AddTorque(Random.Range(deathSpinMin,deathSpinMax));
-
+        
 		// Find all of the colliders on the gameobject and set them all to be triggers.
 		Collider2D[] cols = GetComponents<Collider2D>();
 		foreach(Collider2D c in cols)
@@ -123,11 +115,11 @@ public class Enemy : MonoBehaviour
 
 		GameObject item;
 		if (r.Next (10) == 0) {
-			item = Instantiate (rareDropItem);
-			item.GetComponent<ItemDrop> ().qty = rareDroppedQty;
+			item = Instantiate (RareDrop);
+			item.GetComponent<ItemDrop> ().qty = RareDroppedQty;
 		} else {
-			item = Instantiate (dropItem);
-			item.GetComponent<ItemDrop> ().qty = droppedQty;
+			item = Instantiate (Drop);
+			item.GetComponent<ItemDrop> ().qty = DroppedQty;
 		}
 
 		item.transform.position = gameObject.transform.position;

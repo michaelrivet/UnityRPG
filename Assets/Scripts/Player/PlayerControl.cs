@@ -16,6 +16,8 @@ public class PlayerControl : MonoBehaviour
     private Transform t;
     private Rigidbody2D r;
 
+    public int HP;
+    public int Shield;
     public PlayerStats playerStats;
 	private PlayerHealth _playerHealth;
 	private PlayerShield _playerShield;
@@ -58,18 +60,24 @@ public class PlayerControl : MonoBehaviour
 		// If the colliding gameobject is an Enemy...
 		if (col.gameObject.tag == "Enemy" && Time.time > playerStats.LastHitTime + RepeatDamagePeriod)
 		{
-			Hurt(10);
+            int enemyAttack = col.gameObject.GetComponent<Enemy>().Attack;
+			Hurt(enemyAttack);
 		}
 	}
 
-	public void Hurt(int damage)
+	public void Hurt(int Attack)
 	{
 		playerStats.LastHitTime = Time.time;
-		if (playerStats.Shield > 0) {
-			_playerShield.DamageShield (damage);
-		} else if (playerStats.Health > damage) {
-			_playerHealth.TakeDamage (damage);
-		} else {
+		if (playerStats.Shield > 0)
+        {
+			_playerShield.DamageShield (Attack);
+		}
+        else
+        {
+			_playerHealth.TakeDamage (Attack);
+		}
+        if(playerStats.Health == 0)
+        {
 			Kill ();
 		}
 	}
@@ -81,6 +89,8 @@ public class PlayerControl : MonoBehaviour
 
 	void FixedUpdate ()
 	{
+        HP = playerStats.Health;
+        Shield = playerStats.Shield;
 		movement = new Vector2 (Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));        //Put them in a Vector2 Variable (x,y)
         r.velocity = movement * maxSpeed; 		//Add Velocity to the player ship rigidbody
 

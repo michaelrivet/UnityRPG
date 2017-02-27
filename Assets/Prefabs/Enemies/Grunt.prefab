@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 417148}
   - 212: {fileID: 21253794}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShieldBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 436262}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealthDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 444284}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShieldDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - 114: {fileID: 11456154}
   - 114: {fileID: 11484182}
   - 120: {fileID: 12012710}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Grunt
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 448218}
   - 212: {fileID: 21281240}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,19 +189,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef474d77e998d4890bff85103fb4c947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  HP: 10
+  MoveSpeed: 2
+  Attack: 5
+  Defense: 5
   deadEnemy: {fileID: 21300000, guid: 70c7c3dd9b2b33e4281004954b76f0a3, type: 3}
   damagedEnemy: {fileID: 21300000, guid: f9e9210405c0aa14bb0fdabd4ce2bd25, type: 3}
   deathClips: []
   hundredPointsUI: {fileID: 100006, guid: 31974361bc9e44fb18c77b64a4cb3bbd, type: 2}
-  deathSpinMin: -100
-  deathSpinMax: 100
-  dropItem: {fileID: 187144, guid: 35351bce2cee7d749a39ebe2ea75cb3e, type: 2}
-  droppedQty: 5
-  rareDropItem: {fileID: 104714, guid: 94429578f0ac2844fa12a7bffae0aaec, type: 2}
-  rareDroppedQty: 2
-  LastHit: 0
+  Drop: {fileID: 187144, guid: 35351bce2cee7d749a39ebe2ea75cb3e, type: 2}
+  DroppedQty: 1
+  RareDrop: {fileID: 104714, guid: 94429578f0ac2844fa12a7bffae0aaec, type: 2}
+  RareDroppedQty: 1
 --- !u!114 &11421506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -430,6 +428,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: Speed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: DroppedQty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: RareDroppedQty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: RareDrop
+      value: 
+      objectReference: {fileID: 104714, guid: 94429578f0ac2844fa12a7bffae0aaec, type: 2}
+    - target: {fileID: 0}
+      propertyPath: Drop
+      value: 
+      objectReference: {fileID: 187144, guid: 35351bce2cee7d749a39ebe2ea75cb3e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

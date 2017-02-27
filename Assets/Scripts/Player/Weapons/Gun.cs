@@ -4,18 +4,18 @@ using System;
 
 public class Gun : MonoBehaviour
 {
-	public GameObject Rocket;				// Prefab of the rocket. (Must be an IProjectile)
+	public GameObject Ammo;				// Prefab of the rocket. (Must be an IProjectile)
 	public float Speed = 20f;				// The speed the rocket will fire at.
     
-	private PlayerControl _playerCtrl;		// Reference to the PlayerControl script.
 	private Animator _anim;					// Reference to the Animator component.
+    private PlayerControl _playerCtrl;
 
 	void Awake()
 	{
 		// Setting up the references.
 		_anim = transform.root.gameObject.GetComponent<Animator>();
-        _playerCtrl = transform.root.GetComponent<PlayerControl>();
-	}
+        _playerCtrl = transform.root.gameObject.GetComponent<PlayerControl>();
+    }
 
 
 	void Update ()
@@ -38,11 +38,12 @@ public class Gun : MonoBehaviour
             
             Vector2 dir = Vector2.ClampMagnitude(mouseLoc - transform.position, 1.0f);
 
-            GameObject bulletInstance = Instantiate(Rocket);
-			IProjectile bI = bulletInstance.GetComponent<IProjectile>();
+            GameObject projectileObject = Instantiate(Ammo);
+            Projectile p = projectileObject.GetComponent<Projectile>();
 
-			bI.SetLocation(transform.GetChild(0).gameObject.transform.position);
-            bI.SetDirection(dir);
-		}
+            p.SetLocation(transform.GetChild(0).gameObject.transform.position);
+            p.SetDirection(new Vector2(dir.x, dir.y));
+            p.SetAttack(_playerCtrl.playerStats.BaseAttack + _playerCtrl.playerStats.WeaponAttack);
+        }
 	}
 }

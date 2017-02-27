@@ -19,7 +19,7 @@ Platform assembly: E:\Users\Public\Documents\Unity Projects\UnityRPG\testEngine_
 Loading E:\Users\Public\Documents\Unity Projects\UnityRPG\testEngine_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
 Platform assembly: E:\Users\Public\Documents\Unity Projects\UnityRPG\testEngine_Data\Managed\LitJson.dll (this message is harmless)
 Loading E:\Users\Public\Documents\Unity Projects\UnityRPG\testEngine_Data\Managed\LitJson.dll into Unity Child Domain
-- Completed reload, in  0.040 seconds
+- Completed reload, in  0.141 seconds
 desktop: 1920x1080 60Hz; virtual: 5760x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -27,8 +27,46 @@ desktop: 1920x1080 60Hz; virtual: 5760x1080 at 0,0
 Platform assembly: E:\Users\Public\Documents\Unity Projects\UnityRPG\testEngine_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: E:\Users\Public\Documents\Unity Projects\UnityRPG\testEngine_Data\Managed\System.dll (this message is harmless)
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.691422 ms
+UnloadTime: 5.215525 ms
 
 Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 688.
-Total: 0.369782 ms (FindLiveObjects: 0.037942 ms CreateObjectMapping: 0.027990 ms MarkObjects: 0.249113 ms  DeleteObjects: 0.034832 ms)
+Total: 0.551719 ms (FindLiveObjects: 0.052870 ms CreateObjectMapping: 0.062511 ms MarkObjects: 0.384711 ms  DeleteObjects: 0.035143 ms)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 394)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 394)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 394)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 394)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 394)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.729489 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 686.
+Total: 0.526839 ms (FindLiveObjects: 0.045095 ms CreateObjectMapping: 0.033588 ms MarkObjects: 0.432294 ms  DeleteObjects: 0.015239 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.146233 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 686.
+Total: 0.522485 ms (FindLiveObjects: 0.048205 ms CreateObjectMapping: 0.036076 ms MarkObjects: 0.424830 ms  DeleteObjects: 0.013062 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.375132 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 686.
+Total: 0.545810 ms (FindLiveObjects: 0.051315 ms CreateObjectMapping: 0.033899 ms MarkObjects: 0.446911 ms  DeleteObjects: 0.012751 ms)
 

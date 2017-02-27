@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9973ebbc09ce3c74ba2f64ca740411fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageMult: 1.5
   LaserHit: {fileID: 404696}
   Distance: 20
   Damage: 5
@@ -171,6 +172,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: DamageMult
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

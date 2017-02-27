@@ -32,16 +32,16 @@ public class PlayerHealth : MonoBehaviour
         _playerControl.playerStats.Health = Mathf.Clamp(_playerControl.playerStats.Health, 0, 100);
     }
 
-    public void TakeDamage (int damage)
+    public void TakeDamage (int Attack)
 	{
-		// Create a vector that's from the enemy to the player with an upwards boost.
-		//Vector3 hurtVector = transform.position - enemy.position + Vector3.up * 5f;
+        // Create a vector that's from the enemy to the player with an upwards boost.
+        //Vector3 hurtVector = transform.position - enemy.position + Vector3.up * 5f;
 
-		// Add a force to the player in the direction of the vector and multiply by the hurtForce.
-		//GetComponent<Rigidbody2D>().AddForce(hurtVector * hurtForce);
+        // Add a force to the player in the direction of the vector and multiply by the hurtForce.
+        //GetComponent<Rigidbody2D>().AddForce(hurtVector * hurtForce);
 
-        // Reduce the player's health by 10.
-		_playerControl.playerStats.Health -= damage;
+        int damage = DamageCalc.CalcDamage(Attack, _playerControl.playerStats.Armor + _playerControl.playerStats.Defense, DamageType.Energy);
+        _playerControl.playerStats.Health -= damage;
 
 		if (_playerControl.playerStats.Health < 0)
 			_playerControl.playerStats.Health = 0;

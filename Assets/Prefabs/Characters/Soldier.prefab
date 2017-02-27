@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9bf156813c141e98b61835f46356f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rocket: {fileID: 100000, guid: 8fde8ec1b330d4bbfb4839f4b41cadc0, type: 2}
+  Ammo: {fileID: 100000, guid: 8fde8ec1b330d4bbfb4839f4b41cadc0, type: 2}
   Speed: 20
 --- !u!114 &11400002
 MonoBehaviour:
@@ -709,6 +709,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ddd0ca15e5d0a42b98f08337c1690bb1, type: 3}
   tauntProbability: 50
   tauntDelay: 1
+  HP: 0
+  Shield: 0
   RepeatDamagePeriod: 1
 --- !u!114 &11400004
 MonoBehaviour:
@@ -805,10 +807,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96388e9f9e8d2294ca4d8f7c11762fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillName: Bomb 4
+  SkillName: Bomb 1
   SkillTimer: {fileID: 0}
-  Cooldown: 5
-  SkillObject: {fileID: 118556, guid: f8036e1ef03eae844b053e428833c341, type: 2}
+  Cooldown: 1
+  SkillObject: {fileID: 100000, guid: 9f1c955688b614b259cf703b0b1c73d2, type: 2}
   BaseDamage: 0
   SkillId: 2
 --- !u!114 &11484970
@@ -825,7 +827,7 @@ MonoBehaviour:
   SkillName: Sabatoge
   SkillTimer: {fileID: 0}
   Cooldown: 5
-  SkillObject: {fileID: 100000, guid: 9f1c955688b614b259cf703b0b1c73d2, type: 2}
+  SkillObject: {fileID: 109352, guid: a4493d40e392ef84abfe5f711659c12c, type: 2}
   BaseDamage: 0
   SkillId: 1
 --- !u!114 &11493270
@@ -1166,7 +1168,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: Ammo
       value: 
-      objectReference: {fileID: 126348, guid: 9f385a474da36af4c9f83a46d129f6cc, type: 2}
+      objectReference: {fileID: 100000, guid: 8fde8ec1b330d4bbfb4839f4b41cadc0, type: 2}
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
@@ -1230,6 +1232,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SkillObject
+      value: 
+      objectReference: {fileID: 100000, guid: 9f1c955688b614b259cf703b0b1c73d2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: SkillName
+      value: Bomb 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Cooldown
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -11,11 +11,10 @@ GameObject:
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400000}
   - 58: {fileID: 5800000}
-  - 61: {fileID: 6100000}
   - 50: {fileID: 5000000}
   m_Layer: 8
   m_Name: bomb1
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +30,7 @@ GameObject:
   - 198: {fileID: 19800000}
   - 199: {fileID: 19900000}
   - 114: {fileID: 11400002}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6154.33203, z: -28.3439941}
+  m_LocalPosition: {x: -.501614749, y: -6154.5752, z: -28.3439941}
   m_LocalScale: {x: .351805806, y: .351805747, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -87,24 +86,11 @@ CircleCollider2D:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: .0199999996}
   serializedVersion: 2
   m_Radius: 1.25999999
---- !u!61 &6100000
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 0
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: -.100000001, y: .219999999}
-  serializedVersion: 2
-  m_Size: {x: .839999974, y: .579999983}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,12 +102,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d060b6f2711747368c4bc5aae24049b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombRadius: 7
+  DamageMult: 1
+  bombRadius: 15
   bombForce: 100
   boom: {fileID: 8300000, guid: 8b4e61c51941a46d1aac273472c814fd, type: 3}
   fuse: {fileID: 8300000, guid: 238da4efc08184aee919af254edb2ef1, type: 3}
   fuseTime: 1.5
   explosion: {fileID: 100000, guid: 9c8b546f746e74328ab6b8bba733af67, type: 2}
+  Speed: 20
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1241,6 +1229,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_GravityScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bombRadius
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
