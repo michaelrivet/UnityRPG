@@ -29,14 +29,14 @@ public class EnemyAI : MonoBehaviour
     private bool _shooting = false;
 
 	private SpriteRenderer _ren;			// Reference to the sprite renderer.
-	//private LineRenderer _debugLine;
+	private LineRenderer _debugLine;
     
     void Start()
     {
         enemyRotation = this.transform.localRotation;
 		target = GameObject.FindGameObjectsWithTag("Player")[0].transform;
 		_ren = transform.GetComponent<SpriteRenderer>();
-		//_debugLine = transform.GetComponent<LineRenderer>();
+		_debugLine = transform.GetComponent<LineRenderer>();
     }
 
     void Update()
@@ -45,8 +45,8 @@ public class EnemyAI : MonoBehaviour
 			return;
 
         // Debug stuff to draw line of sight to player
-        //_debugLine.SetPosition(0, enemyPos);
-        //_debugLine.SetPosition(1, playerPos);
+        _debugLine.SetPosition(0, enemyPos);
+        _debugLine.SetPosition(1, playerPos);
 
         playerPos = new Vector2(target.position.x, target.position.y);//player position 
         enemyPos = new Vector2(this.transform.localPosition.x, this.transform.localPosition.y);//enemy position
@@ -121,8 +121,8 @@ public class EnemyAI : MonoBehaviour
 		foreach (Collider2D shot in Shots) {
 			if(shot.tag == "Bullet")
 			{
-				IProjectile sI = shot.gameObject.GetComponent<IProjectile>();
-				if(!sI.GetIsEnemy()) 
+				Projectile s = shot.gameObject.GetComponent<Projectile>();
+				if(s != null && !s.GetIsEnemy()) 
 				{
 					_lastDodgeTime = Time.time;
                     if (UnityEngine.Random.Range(0, 3) == 0  )
@@ -165,13 +165,14 @@ public class EnemyAI : MonoBehaviour
 
     void Shoot() 
 	{
-		GameObject bulletInstance = Instantiate(Projectile);
-		IProjectile bI = bulletInstance.GetComponent<IProjectile>();
+        GameObject projectileObject = Instantiate(Projectile);
+		Projectile p = projectileObject.GetComponent<Projectile>();
 		
-		bI.SetLocation(transform.position);
+		p.SetLocation(transform.position);
 		Vector2 dir = Vector2.ClampMagnitude(playerPos - enemyPos, 1.0f);
 		//Vector2 offset = new Vector2 ((float)UnityEngine.Random.Range (0, 30) / 300f, (float)UnityEngine.Random.Range (0, 30) / 300f);
-		bI.SetDirection(Vector2.ClampMagnitude(dir , 1.0f));
-		bI.SetIsEnemy (true);
+		p.SetDirection(Vector2.ClampMagnitude(dir , 1.0f));
+		p.SetIsEnemy (true);
+        p.SetAttack(5);
 	}
 }
