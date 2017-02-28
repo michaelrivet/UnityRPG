@@ -89,8 +89,8 @@
      <Compile Include="Assets\Scripts\Player\Weapons\Base\IProjectile.cs" />
      <Compile Include="Assets\Scripts\Player\Weapons\Base\Projectile.cs" />
      <Compile Include="Assets\Scripts\Player\Weapons\Gun.cs" />
-     <Compile Include="Assets\Scripts\Player\Weapons\Laser.cs" />
-     <Compile Include="Assets\Scripts\Player\Weapons\Rocket.cs" />
+     <Compile Include="Assets\Scripts\Player\Weapons\Projectiles\Laser.cs" />
+     <Compile Include="Assets\Scripts\Player\Weapons\Projectiles\Rocket.cs" />
      <Compile Include="Assets\Scripts\Player\Weapons\SecondWeapon.cs" />
      <Compile Include="Assets\Scripts\Remover.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />

@@ -84,7 +84,7 @@ public class EnemyAI : MonoBehaviour
                     {
                         ShootCooldown = UnityEngine.Random.Range(2f, 4f);
                         _lastShotTime = Time.time;
-                        Shoot();
+                        //Shoot();
                     }
                     else if(Time.time > _lastMoveTime + 2f)
                     {
