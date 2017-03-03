@@ -8,6 +8,7 @@ public class GlobalControl : MonoBehaviour {
 
     public GameObject Player;
     public PlayerStats PlayerStats;
+    public UpgradeStats UpgradeStats;
     public KeyboardSettings KeyboardSettings;
     public List<ItemData> Items;
 

@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9bf156813c141e98b61835f46356f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rocket: {fileID: 5000000, guid: 8fde8ec1b330d4bbfb4839f4b41cadc0, type: 2}
+  Ammo: {fileID: 0}
   Speed: 20
 --- !u!114 &11471770
 MonoBehaviour:
@@ -690,9 +690,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6804babace5cc47dd8b61abb292c4be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClassName: Technician
   facingRight: 1
-  facingUp: 1
   movement: {x: 0, y: 0}
+  RepeatDamagePeriod: 1
   maxSpeed: 16
   taunts:
   - {fileID: 8300000, guid: 27cbebf9d650249e5b032494eae5322c, type: 3}
@@ -705,6 +706,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ddd0ca15e5d0a42b98f08337c1690bb1, type: 3}
   tauntProbability: 50
   tauntDelay: 1
+  HP: 0
+  Shield: 0
 --- !u!114 &11493424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1034,6 +1037,10 @@ Prefab:
       propertyPath: Rocket
       value: 
       objectReference: {fileID: 5000000, guid: 8fde8ec1b330d4bbfb4839f4b41cadc0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: ClassName
+      value: Technician
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 107838}

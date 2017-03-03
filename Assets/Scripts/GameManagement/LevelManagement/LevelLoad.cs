@@ -10,8 +10,8 @@ public class LevelLoad : MonoBehaviour {
         GameObject player = Instantiate(GlobalControl.Instance.Player);
         player.transform.position = PlayerLoader.transform.position;
         GameObject.Find("mainCamera").GetComponent<CameraFollow>().SetPlayer(player);
-
-		LoadPlayerStats ();
+        
+        LoadPlayerStats (player.GetComponent<PlayerControl>().PlayerClass);
 	}
 	
 	// Update is called once per frame
@@ -19,11 +19,11 @@ public class LevelLoad : MonoBehaviour {
 	
 	}
 
-	void LoadPlayerStats()
+	void LoadPlayerStats(Class PlayerClass)
 	{
 		// If this is the first level, load the player stats.
 		if (GlobalControl.Instance.PlayerStats == null)
 			GlobalControl.Instance.PlayerStats = new PlayerStats ();
-		GlobalControl.Instance.PlayerStats.SetPlayerStats ();
+		GlobalControl.Instance.PlayerStats.SetPlayerStats (PlayerClass);
 	}
 }

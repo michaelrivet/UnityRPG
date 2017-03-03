@@ -35,14 +35,20 @@ public class EnemyShield : MonoBehaviour {
         return _shield > 0;
     }
 
-    public void DamageShield(int Attack)
+    public int DamageShield(int Attack)
     {
+        int extraDamage = 0;
         int damage = DamageCalc.CalcShield(Attack, _enemy.Defense, DamageType.Kinetic);
         _shield -= damage;
         if (_shield < 0)
+        {
+            extraDamage = -_shield;
             _shield = 0;
+        }
 
         UpdateShieldBar();
+
+        return extraDamage;
     }
 
     IEnumerator RechargeShield()

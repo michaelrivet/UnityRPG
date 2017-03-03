@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
 	public int damageAmount = 10;			    // The amount of damage to take when enemies touch the player
 
 	private Image _healthBar;			// Reference to the sprite renderer of the health bar.
+    private Text _healthText;
 	private Vector3 _healthScale;				// The local scale of the health bar initially (with full health).
 	private PlayerControl _playerControl;		// Reference to the PlayerControl script.
 	private Animator _anim;						// Reference to the Animator on the player
@@ -19,7 +20,8 @@ public class PlayerHealth : MonoBehaviour
 		// Setting up references.
 		_playerControl = GetComponent<PlayerControl>();
 		_healthBar = GameObject.Find("PlayerHealthBar").GetComponent<Image>();
-		_anim = GetComponent<Animator>();
+        _healthText = GameObject.Find("PlayerHealthText").GetComponent<Text>();
+        _anim = GetComponent<Animator>();
 
 		// Getting the intial scale of the healthbar (whilst the player has full health).
 		_healthScale = _healthBar.transform.localScale;
@@ -51,11 +53,32 @@ public class PlayerHealth : MonoBehaviour
 
 		// Play a random clip of the player getting hurt.
 		int i = Random.Range (0, ouchClips.Length);
-		AudioSource.PlayClipAtPoint(ouchClips[i], transform.position);
-	}
+        //AudioSource.PlayClipAtPoint(ouchClips[i], transform.position);
+    }
+
+    public void TakeDamageValue(int Damage)
+    {
+        // Create a vector that's from the enemy to the player with an upwards boost.
+        //Vector3 hurtVector = transform.position - enemy.position + Vector3.up * 5f;
+
+        // Add a force to the player in the direction of the vector and multiply by the hurtForce.
+        //GetComponent<Rigidbody2D>().AddForce(hurtVector * hurtForce);
+        
+        _playerControl.playerStats.Health -= Damage;
+
+        if (_playerControl.playerStats.Health < 0)
+            _playerControl.playerStats.Health = 0;
+
+        // Update what the health bar looks like.
+        UpdateHealthBar();
+
+        // Play a random clip of the player getting hurt.
+        int i = Random.Range(0, ouchClips.Length);
+        //AudioSource.PlayClipAtPoint(ouchClips[i], transform.position);
+    }
 
 
-	public void UpdateHealthBar ()
+    public void UpdateHealthBar ()
 	{
         // Set the health bar's colour to proportion of the way between green and red based on the player's health.
         float healthPercent = (float)_playerControl.playerStats.Health / (float)_playerControl.playerStats.MaxHealth;
@@ -67,5 +90,7 @@ public class PlayerHealth : MonoBehaviour
 
 		// Set the scale of the health bar to be proportional to the player's health.
         _healthBar.transform.localScale = new Vector3(_healthScale.x * healthPercent, 1, 1);
-	}
+        _healthText.text = _playerControl.playerStats.Health.ToString();
+
+    }
 }

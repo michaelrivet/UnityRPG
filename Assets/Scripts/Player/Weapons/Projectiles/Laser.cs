@@ -47,7 +47,7 @@ public class Laser : Projectile {
             {
                 _width -= 0.2f;
                 if (_width < 0f)
-                    _width = 0.2f;
+                    _width = 0.0f;
                 _lineRenderer.SetWidth(_width, _width);
             }
             yield return new WaitForSeconds(.01f); ;

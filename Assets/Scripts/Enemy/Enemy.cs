@@ -56,7 +56,9 @@ public class Enemy : MonoBehaviour
         // Reduce the number of hit points by one.
         if (_enemyShield.IsShieldActive())
         {
-            _enemyShield.DamageShield(Attack);
+            int extraDamage = _enemyShield.DamageShield(Attack);
+            if (extraDamage != 0)
+                _enemyHealth.DamageHealthValue(extraDamage);
         }
         else
         {
@@ -102,7 +104,7 @@ public class Enemy : MonoBehaviour
 		scorePos.y += 1.5f;
 
 		// Instantiate the 100 points prefab at this point.
-		Instantiate(hundredPointsUI, scorePos, Quaternion.identity);
+		//Instantiate(hundredPointsUI, scorePos, Quaternion.identity);
 
         DropItem();
 

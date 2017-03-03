@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 
+[System.Serializable]
 public class Bomb : Skill
 {
 	public float bombRadius = 10f;			// Radius within which enemies are killed.

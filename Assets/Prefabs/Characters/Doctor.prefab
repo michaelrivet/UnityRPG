@@ -662,8 +662,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6804babace5cc47dd8b61abb292c4be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClassName: Doctor
   facingRight: 1
   movement: {x: 0, y: 0}
+  RepeatDamagePeriod: 1
   maxSpeed: 16
   taunts:
   - {fileID: 8300000, guid: 27cbebf9d650249e5b032494eae5322c, type: 3}
@@ -678,7 +680,6 @@ MonoBehaviour:
   tauntDelay: 1
   HP: 0
   Shield: 0
-  RepeatDamagePeriod: 1
 --- !u!114 &11451086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1047,6 +1048,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ClassName
+      value: Doctor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

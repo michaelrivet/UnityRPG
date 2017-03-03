@@ -1,10 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
+public class customClass
+{
+    public int customInt;
+    public string customString;
+}
+
 public class PlayerControl : MonoBehaviour
 {
+    public Class PlayerClass;
+
 	public bool facingRight = true;			// For determining which way the player is currently facing.
     public Vector2 movement;
+    public float RepeatDamagePeriod = 1f;       // How frequently the player can be damaged.
 
     public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
 	public AudioClip[] taunts;				// Array of clips for when the player taunts.
@@ -15,13 +25,13 @@ public class PlayerControl : MonoBehaviour
 	private Animator anim;					// Reference to the player's animator component.
     private Transform t;
     private Rigidbody2D r;
-
+    
     public int HP;
     public int Shield;
     public PlayerStats playerStats;
 	private PlayerHealth _playerHealth;
 	private PlayerShield _playerShield;
-	public float RepeatDamagePeriod = 1f;       // How frequently the player can be damaged.
+    private PlayerEnergy _playerEnergy;
 
     public void SavePlayerData()
     {
@@ -41,7 +51,8 @@ public class PlayerControl : MonoBehaviour
         r = GetComponent<Rigidbody2D>();
 		_playerHealth = GetComponent<PlayerHealth> ();
 		_playerShield = GetComponent<PlayerShield> ();
-	}
+        _playerEnergy = GetComponent<PlayerEnergy> ();
+    }
 
 	void Start()
 	{
@@ -70,7 +81,9 @@ public class PlayerControl : MonoBehaviour
 		playerStats.LastHitTime = Time.time;
 		if (playerStats.Shield > 0)
         {
-			_playerShield.DamageShield (Attack);
+			int extraDamage = _playerShield.DamageShield (Attack);
+            if (extraDamage != 0)
+                _playerHealth.TakeDamageValue(extraDamage);
 		}
         else
         {
@@ -86,6 +99,11 @@ public class PlayerControl : MonoBehaviour
 	{
 
 	}
+
+    public void UseEnergy(int Energy)
+    {
+        _playerEnergy.UseEnergy(Energy);
+    }
 
 	void FixedUpdate ()
 	{
@@ -137,7 +155,7 @@ public class PlayerControl : MonoBehaviour
 
 				// Play the new taunt.
 				GetComponent<AudioSource>().clip = taunts[tauntIndex];
-				GetComponent<AudioSource>().Play();
+				//GetComponent<AudioSource>().Play();
 			}
 		}
 	}

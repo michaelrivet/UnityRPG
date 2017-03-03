@@ -14,7 +14,7 @@ public class MapGenerator : MonoBehaviour
     public int height = 80;
 
     public string seed;
-    public bool useRandomSeed;
+    public bool useRandomSeed = true;
 
     [Range(0, 100)]
     public int randomFillPercent;

@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a64d09a94e38364f8af5ee875c20406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 50
+  MaxHealth: 100
   _health: 0
 --- !u!114 &11456154
 MonoBehaviour:
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb0f3c725b8b1a49aa11b1bed23daa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxShield: 20
+  MaxShield: 100
   RechargeDelay: 2
   RechargeSpeed: 2
   _shield: 0
@@ -241,6 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShootCooldown: 2
   DodgeCooldown: 1
+  HideCooldown: 3
   Projectile: {fileID: 100000, guid: 8fde8ec1b330d4bbfb4839f4b41cadc0, type: 2}
   target: {fileID: 0}
   Speed: 5
@@ -306,7 +307,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1783731295
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 11dcdb8f901d7034ab451c7aeb114e2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -383,11 +384,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: MaxHealth
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: MaxShield
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Projectile
@@ -448,6 +449,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SortingLayerID
+      value: -1783731295
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Attack
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Defense
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

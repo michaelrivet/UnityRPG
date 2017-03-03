@@ -40,6 +40,15 @@ public class EnemyHealth : MonoBehaviour {
         UpdateHealthBar();
     }
 
+    public void DamageHealthValue(int Damage)
+    {
+        _health -= Damage;
+        if (_health < 0)
+            _health = 0;
+
+        UpdateHealthBar();
+    }
+
     public void UpdateHealthBar()
     {
         // Set the health bar's colour to proportion of the way between green and red based on the player's health.

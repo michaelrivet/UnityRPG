@@ -1,7 +1,7 @@
 ﻿[
 {
 	"id": 0,
-	"title": "Steel Gloves",
+	"title": "Yellow Slime",
 	"value": 6,
 	"stats": {
 		"power": 1,
@@ -11,11 +11,12 @@
 	"description": "Gloves made from steel. Yea.",
 	"stackable": false,
 	"rarity": 2,
-	"slug":  "YellowSlime"
+	"slug":  "YellowSlime",
+	"credits": 5
 },
 {
 	"id": 1,
-	"title": "The Great Stick",
+	"title": "Red Slime",
 	"value": 543,
 	"stats": {
 		"power": 56,
@@ -26,11 +27,12 @@
 	"stackable": true,
 	"maxStack" : 3,
 	"rarity": 6,
-	"slug": "RedSlime"
+	"slug": "RedSlime",
+	"credits": 10
 },
 {
 	"id": 2,
-	"title": "The Golden Sword",
+	"title": "Mineral",
 	"value": 234,
 	"stats": {
 		"power": 200,
@@ -40,6 +42,7 @@
 	"description": "This is the best weapon.",
 	"stackable": false,
 	"rarity": 6,
-	"slug":  "MineralReward"
+	"slug":  "MineralReward",
+	"credits": 5
 }
 ]

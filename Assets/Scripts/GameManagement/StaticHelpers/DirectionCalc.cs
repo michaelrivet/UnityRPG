@@ -77,14 +77,32 @@ public static class DirectionCalc {
             else
                 return Vector2.down;
         }
-
-        return Vector2.up;
     }
 	
     public static Vector2 GetPlayerShotDirection(Vector2 dir)
     {
-        Vector2 shotDir = Vector2.left;
+        return dir;
 
-        return shotDir;
+        float angle = (float)(Math.Atan2(dir.y, dir.x) / (2 * Math.PI) * 360f);
+        if (angle > 45 && angle <= 135)
+        {
+            // Up
+            return Vector2.up;
+        }
+        else if (angle > 135 || angle <= -135)
+        {
+            // Left
+            return Vector2.left;
+        }
+        else if (angle < -45 && angle > -135)
+        {
+            // Down
+            return Vector2.down;
+        }
+        else
+        {
+            // Right
+            return Vector2.right;
+        }
     }
 }

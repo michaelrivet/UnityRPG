@@ -53,17 +53,18 @@ public class SecondWeapon : MonoBehaviour {
             _anim.SetTrigger("Shoot2");
             //GetComponent<AudioSource>().Play();
 
-            float xDir = _playerCtrl.movement.x == 0f ? 0f : _playerCtrl.movement.x > 0f ? 1f : -1f;
-            float yDir = _playerCtrl.movement.y == 0f ? 0f : _playerCtrl.movement.y > 0f ? 1f : -1f;
-            if (xDir == 0f && yDir == 0f)
-                xDir = _playerCtrl.facingRight ? 1f : -1f;
+            Vector3 mouseLoc = Input.mousePosition;
+            mouseLoc.z = 10.0f;
+            mouseLoc = Camera.main.ScreenToWorldPoint(mouseLoc);
+
+            Vector2 dir = DirectionCalc.GetPlayerShotDirection(Vector2.ClampMagnitude(mouseLoc - transform.position, 1.0f));
 
             // ... instantiate the rocket facing right and set it's velocity to the right. 
             GameObject projectileObject = Instantiate(Ammo);
 			Projectile p = projectileObject.GetComponent<Projectile>();
 
 			p.SetLocation(transform.GetChild(0).gameObject.transform.position);
-			p.SetDirection(new Vector2(xDir, yDir));
+			p.SetDirection(dir);
             p.SetAttack(_playerCtrl.playerStats.BaseAttack + +_playerCtrl.playerStats.WeaponAttack);
         }
         else

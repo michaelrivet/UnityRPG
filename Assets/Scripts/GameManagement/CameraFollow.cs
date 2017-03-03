@@ -12,6 +12,10 @@ public class CameraFollow : MonoBehaviour
     
 	private Transform player;		// Reference to the player's transform.
 
+    private float _magnitude = 0.25f;
+    private float _duration = 0.5f;
+    private bool _shaking = false;
+
     public void SetPlayer(GameObject p)
     {
         player = p.transform;
@@ -64,4 +68,41 @@ public class CameraFollow : MonoBehaviour
             transform.position = new Vector3(targetX, targetY, transform.position.z);
         }
 	}
+
+    public void ShakeCamera()
+    {
+        if(!_shaking)
+            StartCoroutine(Shake());
+    }
+
+    IEnumerator Shake()
+    {
+        _shaking = true;
+        float elapsed = 0.0f;
+
+        Vector3 originalCamPos = Camera.main.transform.position;
+
+        while (elapsed < _duration)
+        {
+            float targetX = Mathf.Lerp(transform.position.x, player.position.x, xSmooth * Time.deltaTime);
+            float targetY = Mathf.Lerp(transform.position.y, player.position.y, ySmooth * Time.deltaTime);
+
+            elapsed += Time.deltaTime;
+
+            float percentComplete = elapsed / _duration;
+            float damper = 1.0f - Mathf.Clamp(4.0f * percentComplete - 3.0f, 0.0f, 1.0f);
+
+            // map value to [-1, 1]
+            float x = Random.value * 2.0f - 1.0f;
+            float y = Random.value * 2.0f - 1.0f;
+            x *= _magnitude * damper;
+            y *= _magnitude * damper;
+
+            Camera.main.transform.position = new Vector3(targetX + x, targetY + y, originalCamPos.z);
+
+            yield return null;
+        }
+        _shaking = false;
+        //Camera.main.transform.position = originalCamPos;
+    }
 }

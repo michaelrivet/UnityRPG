@@ -143,8 +143,8 @@ GameObject:
   - 61: {fileID: 6100000}
   - 95: {fileID: 9500000}
   - 114: {fileID: 11400004}
-  - 114: {fileID: 11400006}
   - 114: {fileID: 11428908}
+  - 114: {fileID: 11412454}
   - 82: {fileID: 8200004}
   - 212: {fileID: 21211472}
   - 114: {fileID: 11484970}
@@ -695,8 +695,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6804babace5cc47dd8b61abb292c4be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerClass: 0
   facingRight: 1
   movement: {x: 0, y: 0}
+  RepeatDamagePeriod: 1
   maxSpeed: 16
   taunts:
   - {fileID: 8300000, guid: 27cbebf9d650249e5b032494eae5322c, type: 3}
@@ -711,7 +713,6 @@ MonoBehaviour:
   tauntDelay: 1
   HP: 0
   Shield: 0
-  RepeatDamagePeriod: 1
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -731,7 +732,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4baef03e1cc8f4ab69708f3aedbce21c, type: 3}
   hurtForce: 100
   damageAmount: 10
---- !u!114 &11400006
+--- !u!114 &11412454
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -739,13 +740,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2a401b7e00ae4e6f8558aec39e60721, type: 3}
+  m_Script: {fileID: 11500000, guid: 590dabf300c74b54db18980a2cdaf6cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombLaid: 0
-  bombCount: 0
-  bombsAway: {fileID: 8300000, guid: 2d487c0108565443ba2dea29b521e120, type: 3}
-  bomb: {fileID: 100000, guid: 9f1c955688b614b259cf703b0b1c73d2, type: 2}
+  RechargeDelay: 2
+  RechargeSpeed: 2
 --- !u!114 &11428908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -763,7 +762,6 @@ MonoBehaviour:
   ShieldClips: []
   hurtForce: 10
   damageAmount: 10
-  _recharging: 0
 --- !u!114 &11437252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1141,6 +1139,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: Skills.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: speed
       value: 45
       objectReference: {fileID: 0}
@@ -1243,6 +1245,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ClassName
+      value: Soldier
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: facingRight
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

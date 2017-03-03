@@ -32,7 +32,7 @@ public class HealthPickup : MonoBehaviour
 			playerHealth.UpdateHealthBar();
             
 			// Play the collection sound.
-			AudioSource.PlayClipAtPoint(collect,transform.position);
+			//AudioSource.PlayClipAtPoint(collect,transform.position);
 
 			// Destroy the crate.
 			Destroy(transform.root.gameObject);

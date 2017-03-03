@@ -6,6 +6,8 @@ public class EnemyAI : MonoBehaviour
 {
 	public float ShootCooldown = 2f;
 	public float DodgeCooldown = 1f;
+    public float HideCooldown = 3f;
+
 	public GameObject Projectile;
     public Transform target;//set target from inspector instead of looking in Update
     Quaternion enemyRotation;
@@ -15,10 +17,12 @@ public class EnemyAI : MonoBehaviour
 
 	public float ShootDistance = 15f;
 	public float AggroDistance = 100f;
-	private float _lastShotTime;
+    private float _distanceToPlayer;
+
+    private float _lastShotTime = 0f;
 	private float _lastDodgeTime = 0f;
     private float _lastMoveTime = 0f;
-	private float _distanceToPlayer;
+    private float _lastHideTime = 0f;
 
     private Vector2 _dodgeDirection;
     private Vector2 _moveLocation;
@@ -27,9 +31,11 @@ public class EnemyAI : MonoBehaviour
 	private bool _dodging = false;
     private bool _moving = false;
     private bool _shooting = false;
+    private bool _hiding = false;
 
 	private SpriteRenderer _ren;			// Reference to the sprite renderer.
 	private LineRenderer _debugLine;
+    private Enemy _enemy;
     
     void Start()
     {
@@ -37,6 +43,8 @@ public class EnemyAI : MonoBehaviour
 		target = GameObject.FindGameObjectsWithTag("Player")[0].transform;
 		_ren = transform.GetComponent<SpriteRenderer>();
 		_debugLine = transform.GetComponent<LineRenderer>();
+        _enemy = transform.GetComponent<Enemy>();
+
     }
 
     void Update()
@@ -53,7 +61,7 @@ public class EnemyAI : MonoBehaviour
         _distanceToPlayer = Vector3.Distance (transform.transform.position, target.transform.position);
 
         // If we're not dodging or moving
-        if(!_dodging && !_moving)
+        if(!_dodging && !_moving && !_hiding)
         {
             // First, check if a shot is incoming.  If it is, this will set _dodging = true
             if (Time.time > _lastDodgeTime + DodgeCooldown)
@@ -79,12 +87,29 @@ public class EnemyAI : MonoBehaviour
                 else
                 {
                     _ren.color = Color.red;
+
+                    // If we're low on health, decide to run
+                    if(Time.time > _lastHideTime + HideCooldown)
+                    {
+                        _lastHideTime = Time.time;
+
+                        // Roll to see if we're hiding
+                        if (UnityEngine.Random.Range(0, 3) == 0 || true)
+                        {
+                            _hiding = true;
+
+                            Vector2 hideLocation = new Vector2(UnityEngine.Random.Range(-4f, 4f), UnityEngine.Random.Range(-4f, 4f));
+                            _moveLocation = enemyPos + hideLocation;
+                            StartCoroutine("Hide");
+                        }
+                    }
+
                     // If we haven't shot since the cooldown
                     if (Time.time > _lastShotTime + ShootCooldown)
                     {
-                        ShootCooldown = UnityEngine.Random.Range(2f, 4f);
+                        ShootCooldown = UnityEngine.Random.Range(1f, 4f);
                         _lastShotTime = Time.time;
-                        //Shoot();
+                        Shoot();
                     }
                     else if(Time.time > _lastMoveTime + 2f)
                     {
@@ -102,7 +127,15 @@ public class EnemyAI : MonoBehaviour
                                     
             else
             {
-                _ren.color = Color.white;
+                if (Time.time > _lastMoveTime + 3f)
+                {
+                    _lastMoveTime = Time.time;
+                    _ren.color = Color.white;
+                    _moving = false;
+                    Vector2 moveLocation = new Vector2(UnityEngine.Random.Range(-6f, 6f), UnityEngine.Random.Range(-6f, 6f));
+                    _moveLocation = enemyPos + moveLocation;
+                    StartCoroutine("Move");
+                }
             }
         }
         // If we're dodging
@@ -163,6 +196,20 @@ public class EnemyAI : MonoBehaviour
         StopCoroutine("Move");
     }
 
+    IEnumerator Hide()
+    {
+        while (Vector3.Distance(transform.transform.position, _moveLocation) > 0.2f && Time.time < _lastHideTime + 1f)
+        {
+            _ren.color = Color.magenta;
+            transform.position = Vector2.MoveTowards(enemyPos, _moveLocation, 2 * Speed * Time.deltaTime);
+
+            yield return null;
+        }
+
+        _hiding = false;
+        StopCoroutine("Hide");
+    }
+
     void Shoot() 
 	{
         GameObject projectileObject = Instantiate(Projectile);
@@ -170,9 +217,9 @@ public class EnemyAI : MonoBehaviour
 		
 		p.SetLocation(transform.position);
 		Vector2 dir = Vector2.ClampMagnitude(playerPos - enemyPos, 1.0f);
-		//Vector2 offset = new Vector2 ((float)UnityEngine.Random.Range (0, 30) / 300f, (float)UnityEngine.Random.Range (0, 30) / 300f);
-		p.SetDirection(Vector2.ClampMagnitude(dir , 1.0f));
+		Vector2 offset = new Vector2 ((float)UnityEngine.Random.Range (0, 30) / 300f, (float)UnityEngine.Random.Range (0, 30) / 300f);
+		p.SetDirection(Vector2.ClampMagnitude(dir + offset, 1.0f));
 		p.SetIsEnemy (true);
-        p.SetAttack(5);
+        p.SetAttack(_enemy.Attack);
 	}
 }

@@ -17,7 +17,7 @@ public class PlayerShield : MonoBehaviour {
     private PlayerControl _playerControl;        // Reference to the PlayerControl script.
     private Animator _anim;                      // Reference to the Animator on the player
 
-    public bool _recharging = false;
+    private bool _recharging = false;
 	
 
     void Start()
@@ -61,8 +61,9 @@ public class PlayerShield : MonoBehaviour {
 		StopCoroutine("RechargeShield");
     }
 
-    public void DamageShield(int Attack)
+    public int DamageShield(int Attack)
     {
+        int extraDamage = 0;
 		if (_recharging) {
 			_recharging = false;
 			StopCoroutine ("RechargeShield");
@@ -71,7 +72,10 @@ public class PlayerShield : MonoBehaviour {
         int damage = DamageCalc.CalcShield(Attack, _playerControl.playerStats.Armor + _playerControl.playerStats.Defense, DamageType.Kinetic);
         _playerControl.playerStats.Shield -= damage;
         if (_playerControl.playerStats.Shield < 0)
+        {
+            extraDamage = -_playerControl.playerStats.Shield;
             _playerControl.playerStats.Shield = 0;
+        }
 
         // Update what the health bar looks like.
         UpdateShieldBar();
@@ -79,6 +83,8 @@ public class PlayerShield : MonoBehaviour {
         // Play a random clip of the player getting hurt.
         //int i = Random.Range(0, shieldClips.Length);
         //AudioSource.PlayClipAtPoint(shieldClips[i], transform.position);
+
+        return extraDamage;
     }
 
     public void UpdateShieldBar()

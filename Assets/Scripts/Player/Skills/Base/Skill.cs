@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public abstract class Skill : MonoBehaviour {
     public float DamageMult = 1.0f;
+    public int EnergyCost = 10;
+
     protected bool _isEnemy = false;
     protected int _attack;
 

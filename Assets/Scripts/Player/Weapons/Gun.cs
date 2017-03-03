@@ -9,12 +9,14 @@ public class Gun : MonoBehaviour
     
 	private Animator _anim;					// Reference to the Animator component.
     private PlayerControl _playerCtrl;
+    //private CameraFollow _camera;
 
-	void Awake()
+    void Awake()
 	{
 		// Setting up the references.
 		_anim = transform.root.gameObject.GetComponent<Animator>();
         _playerCtrl = transform.root.gameObject.GetComponent<PlayerControl>();
+        //_camera = GameObject.Find("mainCamera").GetComponent<CameraFollow>();
     }
 
 
@@ -36,7 +38,9 @@ public class Gun : MonoBehaviour
             //_anim.SetTrigger("Shoot");
             //GetComponent<AudioSource>().Play();
             
-            Vector2 dir = Vector2.ClampMagnitude(mouseLoc - transform.position, 1.0f);
+            // To decide.  Should I fixed directions (Hero Siege) or any direction (Nuclear Throne)
+            // Right now, clamp direction to 90 degree angles
+            Vector2 dir = DirectionCalc.GetPlayerShotDirection(Vector2.ClampMagnitude(mouseLoc - transform.position, 1.0f));
 
             GameObject projectileObject = Instantiate(Ammo);
             Projectile p = projectileObject.GetComponent<Projectile>();
@@ -44,6 +48,8 @@ public class Gun : MonoBehaviour
             p.SetLocation(transform.GetChild(0).gameObject.transform.position);
             p.SetDirection(new Vector2(dir.x, dir.y));
             p.SetAttack(_playerCtrl.playerStats.BaseAttack + _playerCtrl.playerStats.WeaponAttack);
+
+            //_camera.ShakeCamera();
         }
 	}
 }

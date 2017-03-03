@@ -7,11 +7,13 @@ public class StartGame : MonoBehaviour {
 
     public GameObject InitialMenu;
     public GameObject SelectClass;
+    public GameObject Upgrades;
 
 	// Use this for initialization
 	void Start () {
         LoadSaveGames();
         LoadKeyboardBindings();
+        LoadUpgradeData();
     }
 	
 	// Update is called once per frame
@@ -28,6 +30,13 @@ public class StartGame : MonoBehaviour {
 
     }
 
+    void LoadUpgradeData()
+    {
+        if (GlobalControl.Instance.UpgradeStats == null)
+            GlobalControl.Instance.UpgradeStats = new UpgradeStats();
+        GlobalControl.Instance.UpgradeStats.SetPlayeUpgrades();
+    }
+
     void LoadKeyboardBindings()
     {
         // If custom keyboard bindings, set them.
@@ -39,5 +48,17 @@ public class StartGame : MonoBehaviour {
         {
             GlobalControl.Instance.KeyboardSettings.SetDefault();
         }
+    }
+
+    public void ShowUpgrades()
+    {
+        SelectClass.gameObject.SetActive(false);
+        Upgrades.gameObject.SetActive(true);
+    }
+
+    public void ExitUpgrades()
+    {
+        Upgrades.gameObject.SetActive(false);
+        SelectClass.gameObject.SetActive(true);
     }
 }

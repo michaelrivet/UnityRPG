@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class SkillController : MonoBehaviour {
 
     public string SkillName;
@@ -10,6 +11,7 @@ public class SkillController : MonoBehaviour {
     public int BaseDamage;
     public int SkillId;
 
+    private bool _isActive = false;
     private bool _canUse = true;
 	private float _countdownTime = 0;
 	private string _keyCode;
@@ -20,11 +22,14 @@ public class SkillController : MonoBehaviour {
     void Start () {
         _keyCode = GlobalControl.Instance.KeyboardSettings.GetSkillKey(SkillId);
         _playerCtrl = GetComponent<PlayerControl>();
+        _isActive = GlobalControl.Instance.UpgradeStats.GetIsSkillEnabled(SkillId, _playerCtrl.PlayerClass);
         _anim = gameObject.GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if (!_isActive)
+            return;
 	    if(!_canUse)
         {
             _countdownTime -= Time.deltaTime;
@@ -39,19 +44,25 @@ public class SkillController : MonoBehaviour {
         {
             if(Input.GetButtonDown(_keyCode))
             {
-                _canUse = false;
-                _countdownTime = Cooldown;
+                if(_playerCtrl.playerStats.Energy >= SkillObject.GetComponent<Skill>().EnergyCost)
+                {
+                    _canUse = false;
+                    _countdownTime = Cooldown;
 
-                float xDir = _playerCtrl.movement.x == 0f ? 0f : _playerCtrl.movement.x > 0f ? 1f : -1f;
-                float yDir = _playerCtrl.movement.y == 0f ? 0f : _playerCtrl.movement.y > 0f ? 1f : -1f;
-                if (xDir == 0f && yDir == 0f)
-                    xDir = _playerCtrl.facingRight ? 1f : -1f;
+                    float xDir = _playerCtrl.movement.x == 0f ? 0f : _playerCtrl.movement.x > 0f ? 1f : -1f;
+                    float yDir = _playerCtrl.movement.y == 0f ? 0f : _playerCtrl.movement.y > 0f ? 1f : -1f;
+                    if (xDir == 0f && yDir == 0f)
+                        xDir = _playerCtrl.facingRight ? 1f : -1f;
 
-                GameObject skillInstance = Instantiate(SkillObject);
-                Skill s = skillInstance.GetComponent<Skill>();
-                s.SetLocation(transform.position);
-                s.SetDirection(new Vector2(xDir, yDir));
-                s.SetAttack(_playerCtrl.playerStats.BaseAttack);
+                    GameObject skillInstance = Instantiate(SkillObject);
+                    Skill s = skillInstance.GetComponent<Skill>();
+                    s.SetLocation(transform.position);
+                    s.SetDirection(new Vector2(xDir, yDir));
+                    s.SetAttack(_playerCtrl.playerStats.BaseAttack);
+
+                    _playerCtrl.UseEnergy(s.EnergyCost);
+                }
+                
             }
         }
 	}

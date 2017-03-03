@@ -25,34 +25,39 @@ public class PlayerStats {
     public int MaxEnergy;
 
     public float LastHitTime;
+    public float LastSkillTime;
+    
+    private bool _isInitialized = false;
 
-	private bool _isInitialized = false;
-
-	public void SetPlayerStats()
+    public void SetPlayerStats(Class PlayerClass)
 	{
 
 		if (!_isInitialized) {
-			LoadPlayerStats();
-			_isInitialized = true;
+			LoadPlayerStats(PlayerClass);
+			//_isInitialized = true;
 		}
 	}
 
-	private void LoadPlayerStats() {
-		// Defaulting in values now, will be loaded from file.
-		Health = 100;
-		Shield = 100;
-		Energy = 100;
+	private void LoadPlayerStats(Class PlayerClass)
+    {
 
-		MaxHealth = 100;
-		MaxShield = 100;
-		MaxEnergy = 100;
+        // Defaulting in values now, will be loaded from file.
+        MaxHealth = 100 + GlobalControl.Instance.UpgradeStats.GetLevel(PlayerClass) * 25;
+		MaxShield = 50 + GlobalControl.Instance.UpgradeStats.GetLevel(PlayerClass) * 10;
+		MaxEnergy = 50 + GlobalControl.Instance.UpgradeStats.GetLevel(PlayerClass) * 10;
+
+        Health = MaxHealth;
+        Shield = MaxShield;
+        Energy = MaxEnergy;
 
         Armor = 5;
-        Defense = 5;
+        Defense = 5 + GlobalControl.Instance.UpgradeStats.GetLevel(PlayerClass) * 5;
 
-        BaseAttack = 5;
+        BaseAttack = 5 + GlobalControl.Instance.UpgradeStats.GetLevel(PlayerClass) * 5;
         WeaponAttack = 2;
 
 		Ammo = -1;
-	}
+    }
+
+    
 }

@@ -30,5 +30,4 @@ public class Score : MonoBehaviour
 		// Set the previous score to this frame's score.
 		previousScore = score;
 	}
-
 }

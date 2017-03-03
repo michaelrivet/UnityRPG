@@ -18,8 +18,9 @@ class Inventory : MonoBehaviour
 
     private bool inventoryOpen = false;
     private int slotAmount;
-    public List<Item> items = new List<Item>();
-    public List<GameObject> slots = new List<GameObject>();
+    public List<Item> playerItems = new List<Item>();
+    public List<GameObject> playerSlots = new List<GameObject>();
+
     public long credits;
 
     void Start()
@@ -35,11 +36,11 @@ class Inventory : MonoBehaviour
 
         for (int i = 0; i < slotAmount; i++)
         {
-            items.Add(new Item());
-            slots.Add(Instantiate(inventorySlot));
-            slots[i].GetComponent<Slot>().id = i;
-            slots[i].transform.SetParent(slotPanel.transform,false);
-            slots[i].transform.localPosition = slotPosition;
+            playerItems.Add(new Item());
+            playerSlots.Add(Instantiate(inventorySlot));
+            playerSlots[i].GetComponent<Slot>().id = i;
+            playerSlots[i].transform.SetParent(slotPanel.transform,false);
+            playerSlots[i].transform.localPosition = slotPosition;
             // If it's zero or not the 8th slot, move right.  Otherwise, move down.
             if(i == 0 || (i + 1) % 8 != 0)
                 slotPosition = new Vector2(slotPosition.x + 100f, slotPosition.y);
@@ -84,11 +85,11 @@ class Inventory : MonoBehaviour
     {
         GlobalControl.Instance.Items = new List<ItemData>();
 
-		for(int i = 0; i < items.Count; i++)
+		for(int i = 0; i < playerItems.Count; i++)
         {
-			if (items[i].Id != -1)
+			if (playerItems[i].Id != -1)
 			{
-				ItemData id = slots[i].transform.GetChild(1).gameObject.GetComponent<ItemData>();
+				ItemData id = playerSlots[i].transform.GetChild(1).gameObject.GetComponent<ItemData>();
 				if(id != null)
 					GlobalControl.Instance.Items.Add(id);
 			}
@@ -143,12 +144,12 @@ class Inventory : MonoBehaviour
 			return false;
 		if (itemToAdd.Stackable && CheckIfItemIsInInventory(itemToAdd))
         {
-            for (int i = 0; i < items.Count; i++)
+            for (int i = 0; i < playerItems.Count; i++)
             {
-				if (items[i].Id == id && slots[i].transform.GetChild(1).GetComponent<ItemData>().amount < items[i].MaxStack)
+				if (playerItems[i].Id == id && playerSlots[i].transform.GetChild(1).GetComponent<ItemData>().amount < playerItems[i].MaxStack)
                 {
                     // Get the data.  Currently using GetChild(1).  This could change if adding more images, or removing the child image.  If you do that, this will cause issues.
-                    ItemData data = slots[i].transform.GetChild(1).GetComponent<ItemData>();
+                    ItemData data = playerSlots[i].transform.GetChild(1).GetComponent<ItemData>();
                     data.amount++;
                     data.transform.GetChild(0).GetComponent<Text>().text = data.amount.ToString();
 					return true;
@@ -157,18 +158,18 @@ class Inventory : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < items.Count; i++)
+            for (int i = 0; i < playerItems.Count; i++)
             {
-                if (items[i].Id == -1)
+                if (playerItems[i].Id == -1)
                 {
-                    items[i] = itemToAdd;
+                    playerItems[i] = itemToAdd;
                     GameObject itemObj = Instantiate(inventoryItem);
                     itemObj.GetComponent<ItemData>().item = itemToAdd;
                     itemObj.GetComponent<ItemData>().slotId = i;
-                    itemObj.transform.SetParent(slots[i].transform, false);
+                    itemObj.transform.SetParent(playerSlots[i].transform, false);
                     itemObj.GetComponent<Image>().sprite = itemToAdd.Sprite;
                     itemObj.name = "Item: " + itemToAdd.Title;
-                    slots[i].name = "Slot: " + itemToAdd.Title;
+                    playerSlots[i].name = "Slot: " + itemToAdd.Title;
 					if(itemToAdd.Stackable)
 					{
 						itemObj.GetComponent<ItemData>().amount = 1;
@@ -213,19 +214,19 @@ class Inventory : MonoBehaviour
 
         if (itemToRemove.Stackable)
         {
-            for (int i = 0; i < items.Count; i++)
+            for (int i = 0; i < playerItems.Count; i++)
             {
-                if (items[i].Id == id)
+                if (playerItems[i].Id == id)
                 {
                     // Get the data.  Currently using GetChild(1).  This could change if adding more images, or removing the child image.  If you do that, this will cause issues.
-                    ItemData data = slots[i].transform.GetChild(1).GetComponent<ItemData>();
+                    ItemData data = playerSlots[i].transform.GetChild(1).GetComponent<ItemData>();
                     data.amount--;
                     data.transform.GetChild(0).GetComponent<Text>().text = data.amount.ToString();
 
                     if (data.amount == 0)
                     {
-                        Destroy(slots[i].transform.GetChild(1).gameObject);
-                        items[i].Id = -1;
+                        Destroy(playerSlots[i].transform.GetChild(1).gameObject);
+                        playerItems[i].Id = -1;
                     }
 
                     break;
@@ -234,12 +235,12 @@ class Inventory : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < items.Count; i++)
+            for (int i = 0; i < playerItems.Count; i++)
             {
-                if (items[i].Id == itemToRemove.Id)
+                if (playerItems[i].Id == itemToRemove.Id)
                 {
-					Destroy(slots[i].transform.GetChild(1).gameObject);
-                    items[i].Id = -1;
+					Destroy(playerSlots[i].transform.GetChild(1).gameObject);
+                    playerItems[i].Id = -1;
                     break;
                 }
             }
@@ -248,11 +249,11 @@ class Inventory : MonoBehaviour
 
     public bool CheckfItemIsInInventory(int itemId)
     {
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < playerItems.Count; i++)
         {
-			if (items[i].Id == itemId)
+			if (playerItems[i].Id == itemId)
             {
-				if(!items[i].Stackable || (items[i].Stackable && slots[i].transform.GetChild(1).GetComponent<ItemData>().amount < items[i].MaxStack))
+				if(!playerItems[i].Stackable || (playerItems[i].Stackable && playerSlots[i].transform.GetChild(1).GetComponent<ItemData>().amount < playerItems[i].MaxStack))
 					return true;
             }
         }
@@ -262,11 +263,11 @@ class Inventory : MonoBehaviour
 
     bool CheckIfItemIsInInventory(Item item)
     {
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < playerItems.Count; i++)
         {
-			if (items[i].Id == item.Id)
+			if (playerItems[i].Id == item.Id)
             {
-				if(!items[i].Stackable || (items[i].Stackable && slots[i].transform.GetChild(1).GetComponent<ItemData>().amount < items[i].MaxStack))
+				if(!playerItems[i].Stackable || (playerItems[i].Stackable && playerSlots[i].transform.GetChild(1).GetComponent<ItemData>().amount < playerItems[i].MaxStack))
 					return true;
             }
         }
