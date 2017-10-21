@@ -19,7 +19,7 @@ Platform assembly: E:\Users\Public\Documents\Unity Projects\UnityRPG\testEngine_
 Loading E:\Users\Public\Documents\Unity Projects\UnityRPG\testEngine_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
 Platform assembly: E:\Users\Public\Documents\Unity Projects\UnityRPG\testEngine_Data\Managed\LitJson.dll (this message is harmless)
 Loading E:\Users\Public\Documents\Unity Projects\UnityRPG\testEngine_Data\Managed\LitJson.dll into Unity Child Domain
-- Completed reload, in  0.068 seconds
+- Completed reload, in  0.150 seconds
 desktop: 1920x1080 60Hz; virtual: 5760x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -27,40 +27,24 @@ desktop: 1920x1080 60Hz; virtual: 5760x1080 at 0,0
 Platform assembly: E:\Users\Public\Documents\Unity Projects\UnityRPG\testEngine_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: E:\Users\Public\Documents\Unity Projects\UnityRPG\testEngine_Data\Managed\System.dll (this message is harmless)
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 5.468338 ms
+UnloadTime: 2.967264 ms
 
-Unloading 117 unused Assets to reduce memory usage. Loaded Objects now: 697.
-Total: 0.586237 ms (FindLiveObjects: 0.061267 ms CreateObjectMapping: 0.053181 ms MarkObjects: 0.413320 ms  DeleteObjects: 0.038875 ms)
+Unloading 117 unused Assets to reduce memory usage. Loaded Objects now: 704.
+Total: 0.413009 ms (FindLiveObjects: 0.062200 ms CreateObjectMapping: 0.032655 ms MarkObjects: 0.271504 ms  DeleteObjects: 0.022703 ms)
 
 Energy Percent:1
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
 
-Shield: Power: 12 Defense: 5 = Damage : 112.829627536799
+Shield: Power: 33 Defense: 5 = Damage : 205.086478563453
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
 
-Health: Power: 12 Defense: 5 = Damage : 112.829627536799
+Shield: Power: 33 Defense: 5 = Damage : 205.086478563453
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
 
-Shield: Power: 12 Defense: 5 = Damage : 112.829627536799
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Health: Power: 12 Defense: 5 = Damage : 112.829627536799
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Shield: Power: 12 Defense: 5 = Damage : 112.829627536799
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Health: Power: 12 Defense: 5 = Damage : 112.829627536799
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Health: Power: 12 Defense: 5 = Damage : 112.829627536799
+Shield: Power: 33 Defense: 5 = Damage : 205.086478563453
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
 
